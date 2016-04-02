@@ -116,6 +116,7 @@
             <!-- page content -->
             <div class="right_col" role="main">
                 <?php echo $this->load->view($view); ?>
+                <input id="_btn" type="button" value="OK"/>
                 <!-- /page content -->
                 <!-- footer content -->
                 <footer>
