@@ -22,7 +22,21 @@
 //                    echo '<span style="color:red">'.$title.'</span><br/>'.$content.'<br/>';
 //                }
 //            }
+            $data['view'] = "form.php";
+            $this->load->view("index.php",$data);
+        }
+        public function getGiaoVien(){
             $this->load->view("index.php");
+        }
+        
+        public function check_search(){
+            $result = json_decode($this->input->post('data'));
+            $data['result'] = $result;
+            $data['view'] = "Result.php";
+            echo $this->load->view("Result.php",$data);
+            echo '<pre>';
+            print_r($result);
+            echo '</pre>';
         }
     }
 ?>
