@@ -4,11 +4,11 @@ function handleClick(controller) {
     var txtTag = $('#txtTag').val();
     var txtTitle = $('#txtTitle').val();
     var txtContent = $('#txtContent').val();
-    var txtFilename = $('#txtFilename').val();
+    var txtNumPage = $('#txtNumPage').val();
     var ajaxurl = controller;    
         
     if(txtKeyword !== "" && txtUrl !== "" && txtTag !== "" && txtTitle !== "" && txtContent !== ""
-      && txtFilename !== "")
+      && txtNumPage !== "")
     {
         var data =  {
             txtKeyword: txtKeyword, 
@@ -16,12 +16,13 @@ function handleClick(controller) {
             txtTag: txtTag, 
             txtTitle: txtTitle, 
             txtContent: txtContent, 
-            txtFilename: txtFilename
+            txtNumPage: txtNumPage
         };
         var dt = JSON.stringify(data);
         $.ajax({
            type: 'POST',
            url: ajaxurl,
+           connectTimeout: 60,
            data: 'data='+dt,
             success: function(response) {
                 //alert(response);

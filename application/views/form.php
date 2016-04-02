@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 form-group">
                             <div class="input-group input-group-lg panelbox">
-                                <input type="text" id="txtFilename" class="form-control" placeholder="Nhập tập tin để lưu file..." aria-describedby="sizing-addon1">
+                                <input type="text" id="txtNumPage" class="form-control" placeholder="Nhập tổng số trang muốn lấy..." aria-describedby="sizing-addon1">
                                 <span class="input-group-addon" id="sizing-addon1">?</span>
                             </div>
                         </div>
