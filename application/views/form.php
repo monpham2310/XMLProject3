@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-2 col-md-offset-4 form-group">
                             <span class="pagebtny">	
-                                            <button type="submit" name="submit" class="btn" onclick="handleClick('<?php echo base_url("HtmlController/check_search");?>')" >Thực Hiện</button></span>
+                                            <button type="submit" name="submit" class="btn" onclick="handleClick('<?php echo base_url('htmlcontroller/check_search');?>')" >Thực Hiện</button></span>
                         </div>
                         <div class="col-md-2 form-group">
                             <span class="pagebtnn">	
