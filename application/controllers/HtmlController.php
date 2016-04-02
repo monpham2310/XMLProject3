@@ -21,7 +21,6 @@
                     echo '<span style="color:red">'.$title.'</span><br/>'.$content.'<br/>';
                 }
             }
-            
         }
     }
 ?>
