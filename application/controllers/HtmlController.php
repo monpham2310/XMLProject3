@@ -19,10 +19,14 @@
         }
         
         public function check_search(){
-            $result = json_decode($this->input->post('data'));
-            $keywork = $result['txtKeyword'];
-            $content = array();
+            
+            $resultArr = array(
+                'title' => array(),
+                'content' => array()
+            );
             $index=0;
+            $result = json_decode($this->input->post('data'),true);
+
             for($i = 1;$i <= 1; $i++){
                 $website = $this->domparser->file_get_html($result['txtUrl']."?wpage=".$i);
                 foreach($website->find("a.newsTitle") as $key){
@@ -30,13 +34,18 @@
                     
                     //echo $link;
                     $page = $this->domparser->file_get_html($link);
+                    
                     $title = $page->find($result['txtTitle'],0);
                     $content = $page->find($result['txtContent'], 0)->plaintext;
-                    $data[$index] = '<span style="color:red">'.$title.'</span><br/>'.$content.'<br/>';
+                    
+                    $resultArr['title'][$index] = trim($title)."";
+                    $resultArr['content'][$index] = trim($content)."";
+
                     $index++;
                 }
             }
-            $data['result'] = $content;
+            //$resultArr = array_combine($tileArr,$contentArr);
+            $data['result'] = $resultArr;
             echo $this->load->view('Result.php',$data);
         }
     }

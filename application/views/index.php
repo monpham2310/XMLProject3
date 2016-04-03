@@ -115,8 +115,9 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
-                <?php echo $this->load->view($view); ?>
-                <input id="_btn" type="button" value="OK"/>
+                <div id="formInput">
+                    <?php echo $this->load->view($view); ?>
+                </div>
                 <!-- /page content -->
                 <!-- footer content -->
                 <footer>
@@ -175,6 +176,7 @@
     <script type="text/javascript" src="<?php echo base_url("assets/js/pace/pace.min.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/skycons/skycons.min.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myJS.js "); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/script/getContent.js "); ?>"></script>
     <!-- /footer content -->
 </body>
 

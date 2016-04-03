@@ -1,5 +1,8 @@
 <?php
-    echo "<pre>";
-    print_r($result);
-    echo "</pre>";
+    foreach($result as $key){
+        
+    }
+//    echo '<pre>';
+//    print_r($result);
+//    echo '</pre>';
 ?>
