@@ -138,8 +138,9 @@
         <div class="clearfix"></div>
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
+    
     <!--javascrip-->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 
     <!-- gauge js -->
     <script type="text/javascript" src="<?php echo base_url("assets/js/gauge/gauge.min.js "); ?>"></script>
@@ -177,6 +178,7 @@
     <script type="text/javascript" src="<?php echo base_url("assets/js/skycons/skycons.min.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myJS.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/script/getContent.js "); ?>"></script>
+    
     <!-- /footer content -->
 </body>
 
