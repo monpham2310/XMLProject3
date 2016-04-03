@@ -20,7 +20,7 @@
             $count = 0;
             $arr = array();
             try{
-                for($i = 1;$i <= $result['maxNumPage']; $i++)
+                for($i = $result['minNumPage'];$i <= $result['maxNumPage']; $i++)
                 {                    
                     $website = $this->domparser->file_get_html($result['txtWpage'].$i);
                     foreach($website->find($result['txtTag']) as $key)

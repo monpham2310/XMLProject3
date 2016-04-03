@@ -79,24 +79,9 @@
 </div>
 <!-- /.row -->
 <div class="row">
-    <div class="col-md-2 col-md-offset-2 form-group">
+    <div class="col-md-2 col-md-offset-4 form-group">
         <span class="pagebtnxml">	
             <button id="do_search" type="" class="btn" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search"); ?>','search')">Thực hiện</button>
-        </span>
-    </div>
-    <div class="col-md-2 form-group">
-        <span class="pagebtnxml">	
-            <button type="" class="btn"  onclick="handleClick('<?php echo base_url("htmlcontroller/check_search"); ?>','xml')">Xuất XML</button>
-        </span>
-    </div>
-    <div class="col-md-2 form-group">
-        <span class="pagebtnw">	
-            <button id="do_word" type="" class="btn" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search"); ?>','word')">Xuất Word</button>
-        </span>
-    </div>
-    <div class="col-md-2 form-group">
-        <span class="pagebtnex">	
-            <button id="do_excel" type="" class="btn" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search"); ?>',excel)">Xuất Excel</button>
         </span>
     </div>
 </div>

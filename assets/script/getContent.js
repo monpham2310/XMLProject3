@@ -66,7 +66,7 @@ function handleClick(controller,kind){
         var dt = JSON.stringify(data);
         $.ajax({
            type: 'POST',
-           url: "http://localhost:9090/XMLProject3/htmlcontroller/check_search/",
+           url: controller,
            connectTimeout: 60,
            data: 'data='+dt+"&kind="+kind,
             success: function(response) {
