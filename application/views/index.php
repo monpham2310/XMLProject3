@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fox Design</title>
+    <title>HHT - Super Group</title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url("assets/css/bootstrap.min.css "); ?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/fonts/css/font-awesome.min.css "); ?>" rel="stylesheet">
@@ -48,11 +48,11 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="thongtinthanhvien.php">Thông Tin Thành Viên</a>
+                                        <li><a href="<?php echo base_url("htmlcontroller/member"); ?>">Thông Tin Thành Viên</a>
                                         </li>
-                                        <li><a href="giaovien.php">Giáo Viên Hướng Dẫn</a>
+                                        <li><a href="<?php echo base_url("htmlcontroller/teacher"); ?>">Giáo Viên Hướng Dẫn</a>
                                         </li>
-                                        <li><a href="tailieu.php">Tài Liệu Tham Khảo</a>
+                                        <li><a href="<?php echo base_url("htmlcontroller/document"); ?>">Tài Liệu Tham Khảo</a>
                                         </li>
                                     </ul>
                                 </li>
