@@ -1,4 +1,4 @@
-<div class="col-md-2 form-group">
+<div class="col-md-2 col-md-offset-3 form-group">
     <span class="pagebtnxml">	
         <a id="abc" href="<?php echo base_url("htmlcontroller/export/xml"); ?>" class="btn">Xuất XML</a>
     </span>
