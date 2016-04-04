@@ -67,7 +67,6 @@
             }
         }
         public function export($type){
-            
             $ResultArr = $this->session->userdata("content");
             $i=0;
             
@@ -75,6 +74,7 @@
                 header('Content-Type: application/octet-stream');
                 header("Content-Transfer-Encoding: Binary");
                 header("Content-disposition: attachment; filename=myXML.xml");
+                
                 foreach($ResultArr as $key)
                 {
                     print "\r\n"."<page id=".++$i.">";
