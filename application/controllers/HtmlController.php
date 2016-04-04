@@ -6,6 +6,7 @@
             $this->load->helper("url");
             $this->load->library('session');
             $this->load->library("domparser");
+            set_time_limit(0);
         }
         
         public function index(){
@@ -109,9 +110,9 @@
                             print "\r\n\t\t".$value['title'];
                         print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<keyword>";
+                        print "\r\n\t"."<content>";
                             print "\r\n\t\t".$value['content'];
-                        print "\r\n\t"."</keyword>";
+                        print "\r\n\t"."</content>";
 
                         print "\r\n\t"."<count>";
                             print "\r\n\t\t".$value['amount'];
@@ -136,9 +137,9 @@
                             print "\r\n\t\t".$value['title'];
                         print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<keyword>";
+                        print "\r\n\t"."<content>";
                             print "\r\n\t\t".$value['content'];
-                        print "\r\n\t"."</keyword>";
+                        print "\r\n\t"."</content>";
 
                         print "\r\n\t"."<count>";
                             print "\r\n\t\t".$value['amount'];
