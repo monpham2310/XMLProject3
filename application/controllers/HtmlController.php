@@ -121,9 +121,9 @@
                 }
             }
             else if($type == "excel"){
-                header("Content-type: application/vnd.ms-excel");
-                header("Content-Transfer-Encoding: UTF-8");
-                header("Content-Disposition: attachment;Filename=myExcel.xls");
+                header ('Content-Type: application/vnd.ms-excel');
+                header ('Content-Disposition: attachment; filename="filename.xls"');
+                header ('Content-Transfer-Encoding: base64');
                 foreach($ResultArr as $key)
                 {
                     print "\r\n"."<page id=".++$i.">";
@@ -133,7 +133,7 @@
                         print "\r\n\t"."</url>";
 
                         print "\r\n\t"."<title>";
-                            print "\r\n\t\t".$value['title'];
+                            print "\r\n\t\t".iconv("UTF-8", "ISO-8859-1//TRANSLIT",$value['title']);
                         print "\r\n\t"."</title>";
 
                         print "\r\n\t"."<keyword>";

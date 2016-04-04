@@ -85,4 +85,11 @@
         </span>
     </div>
 </div>
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Searching things...
+        </p>
+    </div>
+</div>
 <div class="clearfix"></div>

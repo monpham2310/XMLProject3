@@ -14,6 +14,7 @@
     <link href="<?php echo base_url("assets/css/animate.min.css "); ?>" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="<?php echo base_url("assets/css/custom.css "); ?>" rel="stylesheet">
+    <link href="<?php echo base_url("assets/css/waiting_spinner.css "); ?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/css/maps/jquery-jvectormap-2.0.3.css "); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url("assets/css/icheck/flat/green.css "); ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/floatexamples.css "); ?>" rel="stylesheet" type="text/css" />
@@ -48,6 +49,8 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?php echo base_url("htmlcontroller/"); ?>">Rút trích dữ liệu</a>
+                                        </li>
                                         <li><a href="<?php echo base_url("htmlcontroller/member"); ?>">Thông Tin Thành Viên</a>
                                         </li>
                                         <li><a href="<?php echo base_url("htmlcontroller/teacher"); ?>">Giáo Viên Hướng Dẫn</a>
@@ -178,7 +181,7 @@
     <script type="text/javascript" src="<?php echo base_url("assets/js/skycons/skycons.min.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/myJS.js "); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/script/getContent.js "); ?>"></script>
-    
+    <script type="text/javascript" src="<?php echo base_url("assets/script/spin.min.js "); ?>"></script>
     <!-- /footer content -->
 </body>
 
