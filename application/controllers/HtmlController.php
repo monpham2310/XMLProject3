@@ -34,14 +34,27 @@
             $result = json_decode($this->input->post('data'), true);              
             $j = 0;
             $count = 0;
-            $arr = array();
+            $arrWithNotZero = array();
+            $arrWithZero = array();
+            $parse_url = array();
+            $link = "";
+            $page = "";
+            $title = "";
+            $content = "";
+            $item = array();
+            $website = "";
+            $data = array();
             try{
                 for($i = $result['minNumPage'];$i <= $result['maxNumPage']; $i++)
                 {
                     $website = $this->domparser->file_get_html($result['txtWpage'].$i.".chn");
                     foreach($website->find($result['txtTag']) as $key)
                     {
-                        $link = $result['txtUrl'].$key->href;
+                        $parse_url = parse_str($key);
+                        if($parse_url['host'] == "")
+                            $link = $result['txtUrl'].$key->href;
+                        else
+                            $link = $key->href;
                         $page = $this->domparser->file_get_html($link);
                         $title = $page->find($result['txtTitle'], 0);
                         $title = $title->plaintext;
@@ -55,22 +68,27 @@
                         $item['content'] = trim($content);
                         $item['link'] = $link;
                         $item['amount'] = $count;
-                        $arr['Page'.$i]['article'.$j++] = $item;
+                        if($count > 0){
+                            $arrWithNotZero['Page'.$i]['article'.$j++] = $item;
+                        }
+                        $arrWithZero['Page'.$i]['article'.$j++] = $item;
                     }
                     $j = 0;
                     $count = 0;
                 }
                 //Lấy kiểu file muốn lưu
                 $data['keyword'] = $result['txtKeyword'];
-                $data['result'] = $arr;
-                $this->session->set_userdata("content",$arr);
-                echo $this->load->view('ResultWebsite.php',$data);
+                $data['resultWithNotZero'] = $arrWithNotZero;
+                $data['resultWithZero'] = $arrWithZero;
+                
+                $this->session->set_userdata("content",$data);
+                echo $this->load->view('Result.php',$data);
             }
             catch(Exception $err){
                 echo $err->getMessage();
             }
         }
-        public function export($type){
+        public function export($type, $page){
             $ResultArr = $this->session->userdata("content");
             $i=0;
             
@@ -78,80 +96,163 @@
                 header('Content-Type: application/octet-stream');
                 header("Content-Transfer-Encoding: Binary");
                 header("Content-disposition: attachment; filename=myXML.xml");
-                print("<?xml version=1.0 ?>");
+                
+                print("<?xml version='1.0' encode='utf-8' ?>\n");
                 print("<root>");
-                foreach($ResultArr as $key)
-                {
-                    print "\r\n"."<page id=".++$i.">";
-                    foreach($key as $value){
-                        print "\r\n\t"."<url>";
-                            print "\r\n\t\t".$value['link'];
-                        print "\r\n\t"."</url>";
+                if($page == "page1"){
+                    foreach($ResultArr['resultWithNotZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
 
-                        print "\r\n\t"."<title>";
-                            print "\r\n\t\t".$value['title'];
-                        print "\r\n\t"."</title>";
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".$value['title'];
+                            print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<count>";
-                            print "\r\n\t\t".$value['amount'];
-                        print "\r\n\t"."</count>";
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
+                        
                     }
-                    print "\r\n"."</page>";
                 }
+                else{
+                    foreach($ResultArr['resultWithZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
+
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".$value['title'];
+                            print "\r\n\t"."</title>";
+
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
+                    }
+                }
+                        
                 print("</root>");
             }
             else if($type == "word"){
                 header("Content-type: application/vnd.ms-word");
                 header("Content-Disposition: attachment;Filename=myWord.doc");
-                foreach($ResultArr as $key)
-                {
-                    print "\r\n"."<page id=".++$i.">";
-                    foreach($key as $value){
-                        print "\r\n\t"."<url>";
-                            print "\r\n\t\t".$value['link'];
-                        print "\r\n\t"."</url>";
+                print("<?xml version='1.0' encode='utf-8' ?>\n");
+                print("<root>");
+                if($page == "page1"){
+                    foreach($ResultArr['resultWithNotZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
 
-                        print "\r\n\t"."<title>";
-                            print "\r\n\t\t".$value['title'];
-                        print "\r\n\t"."</title>";
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".$value['title'];
+                            print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<content>";
-                            print "\r\n\t\t".$value['content'];
-                        print "\r\n\t"."</content>";
+                            print "\r\n\t"."<content>";
+                                print "\r\n\t\t".$value['content'];
+                            print "\r\n\t"."</content>";
 
-                        print "\r\n\t"."<count>";
-                            print "\r\n\t\t".$value['amount'];
-                        print "\r\n\t"."</count>";
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
                     }
-                    print "\r\n"."</page>";
                 }
+                else{
+                    foreach($ResultArr['resultWithZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
+
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".$value['title'];
+                            print "\r\n\t"."</title>";
+
+                            print "\r\n\t"."<content>";
+                                print "\r\n\t\t".$value['content'];
+                            print "\r\n\t"."</content>";
+
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
+                    }
+                }
+                print("</root>");
             }
             else if($type == "excel"){
                 header ('Content-Type: application/vnd.ms-excel');
                 header ('Content-Disposition: attachment; filename="filename.xls"');
                 header ('Content-Transfer-Encoding: base64');
-                foreach($ResultArr as $key)
-                {
-                    print "\r\n"."<page id=".++$i.">";
-                    foreach($key as $value){
-                        print "\r\n\t"."<url>";
-                            print "\r\n\t\t".$value['link'];
-                        print "\r\n\t"."</url>";
+                print("<?xml version='1.0' encode='utf-8' ?>");
+                print("<root>");
+                if($page == "page1"){
+                    foreach($ResultArr['resultWithNotZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
 
-                        print "\r\n\t"."<title>";
-                            print "\r\n\t\t".iconv("UTF-8", "ISO-8859-1//TRANSLIT",$value['title']);
-                        print "\r\n\t"."</title>";
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".iconv("UTF-8", "ISO-8859-1//TRANSLIT",$value['title']);
+                            print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<content>";
-                            print "\r\n\t\t".$value['content'];
-                        print "\r\n\t"."</content>";
+                            print "\r\n\t"."<content>";
+                                print "\r\n\t\t".$value['content'];
+                            print "\r\n\t"."</content>";
 
-                        print "\r\n\t"."<count>";
-                            print "\r\n\t\t".$value['amount'];
-                        print "\r\n\t"."</count>";
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
                     }
-                    print "\r\n"."</page>";
                 }
+                else{
+                    foreach($ResultArr['resultWithZero'] as $key)
+                    {
+                        print "\r\n"."<page id=".++$i.">";
+                        foreach($key as $value){
+                            print "\r\n\t"."<url>";
+                                print "\r\n\t\t".$value['link'];
+                            print "\r\n\t"."</url>";
+
+                            print "\r\n\t"."<title>";
+                                print "\r\n\t\t".iconv("UTF-8", "ISO-8859-1//TRANSLIT",$value['title']);
+                            print "\r\n\t"."</title>";
+
+                            print "\r\n\t"."<content>";
+                                print "\r\n\t\t".$value['content'];
+                            print "\r\n\t"."</content>";
+
+                            print "\r\n\t"."<count>";
+                                print "\r\n\t\t".$value['amount'];
+                            print "\r\n\t"."</count>";
+                        }
+                        print "\r\n"."</page>";
+                    }
+                }
+                print("</root>");
             }
             
             

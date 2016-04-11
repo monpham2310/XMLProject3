@@ -19,12 +19,13 @@
 <font id="content" style="font-size:16px">
 <?php
     echo 'Từ khóa tìm kiếm: <font style="color:green; font-size:15px">'.$keyword.'</font><br/>';
-    foreach($result as $key)
+    foreach($result as $key){
         foreach($key as $value){
             echo 'Tiêu đề bài viết: <font style="font-weight:bold; color:red">'.$value['title'].'</font><br/>';
             echo 'Link bài viết: <font style="font-weight:bold"><a href="'.$value['link'].'">'.$value['link'].'</a></font><br/>';
             echo 'Số lượng từ: <font style="font-weight:bold">'.$value['amount'].'</font><br/>';
             echo '<hr/>';
         }
+    }
 ?>
 </font>
