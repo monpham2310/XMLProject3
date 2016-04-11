@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HHT - Super Group</title>
+    <title>HHT - Super Bug</title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url("assets/css/bootstrap.min.css "); ?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/fonts/css/font-awesome.min.css "); ?>" rel="stylesheet">
@@ -29,7 +29,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Fox Design</span></a>
+                        <a href="#" class="site_title"><i class="fa fa-bug"></i> <span>Super Bug</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- sidebar menu -->
@@ -39,13 +39,13 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?php echo base_url("htmlcontroller/"); ?>">Rút trích dữ liệu</a>
+                                        <li><a href="<?php echo base_url(); ?>">Rút trích dữ liệu</a>
                                         </li>
-                                        <li><a href="<?php echo base_url("htmlcontroller/member"); ?>">Thông Tin Thành Viên</a>
+                                        <li><a href="<?php echo base_url("member"); ?>">Thông Tin Thành Viên</a>
                                         </li>
-                                        <li><a href="<?php echo base_url("htmlcontroller/teacher"); ?>">Giáo Viên Hướng Dẫn</a>
+                                        <li><a href="<?php echo base_url("teacher"); ?>">Giáo Viên Hướng Dẫn</a>
                                         </li>
-                                        <li><a href="<?php echo base_url("htmlcontroller/document"); ?>">Tài Liệu Tham Khảo</a>
+                                        <li><a href="<?php echo base_url("document"); ?>">Tài Liệu Tham Khảo</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -82,7 +82,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/img.jpg" alt="">Hana Tiên
+                                    
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -115,7 +115,7 @@
                 <!-- footer content -->
                 <footer>
                     <div class="copyright-info">
-                        <p class="pull-right">@Copyright by <a href="https://facebook.com/camtien1503">Hana Tiên</a>
+                        <p class="pull-right">@Copyright by <a href="https://facebook.com/camtien1503">Super Bug</a>
                         </p>
                     </div>
                     <div class="clearfix"></div>

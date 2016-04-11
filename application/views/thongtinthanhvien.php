@@ -66,6 +66,7 @@
             </div>
         </div>
     </div>
+<!--
     <div class="col-sm-6 col-md-3 ">
         <br/>
         <div class="thumbnail boxuser">
@@ -88,5 +89,6 @@
             </div>
         </div>
     </div>
+-->
 </div>
 <div class="clearfix"></div>

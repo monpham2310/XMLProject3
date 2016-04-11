@@ -37,17 +37,20 @@
             $arr = array();
             try{
                 for($i = $result['minNumPage'];$i <= $result['maxNumPage']; $i++)
-                {                    
-                    $website = $this->domparser->file_get_html($result['txtWpage'].$i);
+                {
+                    $website = $this->domparser->file_get_html($result['txtWpage'].$i.".chn");
                     foreach($website->find($result['txtTag']) as $key)
                     {
                         $link = $result['txtUrl'].$key->href;
                         $page = $this->domparser->file_get_html($link);
-                        $title = $page->find($result['txtTitle'], 0)->plaintext;
-                        $content = $page->find($result['txtContent'], 0)->plaintext;
+                        $title = $page->find($result['txtTitle'], 0);
+                        $title = $title->plaintext;
+                        $content = $page->find($result['txtContent'], 0);
+                        $content = $content->plaintext;
+
                         $count += substr_count(strtolower($title), strtolower($result['txtKeyword']));
                         $count += substr_count(strtolower($content), strtolower($result['txtKeyword']));
-                        
+
                         $item['title'] = trim($title);
                         $item['content'] = trim($content);
                         $item['link'] = $link;
@@ -75,7 +78,8 @@
                 header('Content-Type: application/octet-stream');
                 header("Content-Transfer-Encoding: Binary");
                 header("Content-disposition: attachment; filename=myXML.xml");
-                
+                print("<?xml version=1.0 ?>");
+                print("<root>");
                 foreach($ResultArr as $key)
                 {
                     print "\r\n"."<page id=".++$i.">";
@@ -94,6 +98,7 @@
                     }
                     print "\r\n"."</page>";
                 }
+                print("</root>");
             }
             else if($type == "word"){
                 header("Content-type: application/vnd.ms-word");
