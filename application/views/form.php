@@ -86,7 +86,7 @@
         <div class="col-sm-7">
             <h4>Nhập cấu trúc URL của phân trang <font style="color:red">(*)</font>: </h4>
             <div class="input-group input-group-lg panelbox">
-                <input id="txtWpage" type="text" name="txtWpage" class="form-control" placeholder="VD: https://tinhte.vn/?wpage=" aria-describedby="sizing-addon1">
+                <input id="txtWpage" type="text" name="txtWpage" class="form-control" placeholder="Link phân trang VD:http://vnexpress.net/tin-tuc/the-gioi/page/" aria-describedby="sizing-addon1">
                 <span class="input-group-addon" id="sizing-addon1">?</span>
             </div>
             <span name="warning" id="_txtWpage" style="color:red; font-size:15px"></span>
@@ -94,7 +94,7 @@
         <div class="col-sm-4 col-md-offset-1">
             <h4>Đuôi cấu trúc phân trang: </h4>
             <div class="input-group input-group-lg panelbox">
-                <input id="txtWpageEnd" type="text" name="txtWpageEnd" class="form-control" placeholder="VD: .page" aria-describedby="sizing-addon1">
+                <input id="txtWpageEnd" type="text" name="txtWpageEnd" class="form-control" placeholder="VD:Đuôi link phân trang VD:.html,.chn" aria-describedby="sizing-addon1">
                 <span class="input-group-addon" id="sizing-addon1">?</span>
             </div>
             <span name="warning" id="_maxNumPage" style="color:red; font-size:15px"></span>

@@ -1,7 +1,7 @@
 <div class="tabs">
     <ul class="tab-links">
         <li class="active"><a href="#tab1">Số từ lớn hơn 0</a></li>
-        <li><a href="#tab2">Số từ bằng 0</a></li>
+        <li><a href="#tab2">Tất cả</a></li>
     </ul>
     <div class="tab-content">
         <div id="tab1" class="tab active">
